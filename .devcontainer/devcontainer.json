@@ -1,0 +1,6 @@
+{
+    "image": "osrf/ros:humble-desktop-full",
+    "remoteUser": "root",
+    "runArgs": ["--network=host"],
+    "workspaceFolder": "/workspace"
+}
