@@ -1,0 +1,6 @@
+robot_monitor:
+  ros__parameters:
+    robot_name: "IndustrialRobot_V1"
+    max_cpu_temperature: 82.5
+    publish_rate: 2.0
+    is_verbose: true
