@@ -19,9 +19,12 @@ setup(
     license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
-        'console_scripts': [
-            'std_service_server = my_first_package.use_std_service:main',
-            'std_service_client = my_first_package.use_std_client:main',
-        ],
-    },
+    'console_scripts': [
+        'my_first_node = my_first_package.my_first_node:main',
+        'my_first_subscriber = my_first_package.my_first_subscriber:main',
+        'add_two_ints_server = my_first_package.add_two_ints_server:main',
+        'add_two_ints_client = my_first_package.add_two_ints_client:main',
+        'smart_light_node = my_first_package.smart_light_node:main',
+    ],
+},
 )
