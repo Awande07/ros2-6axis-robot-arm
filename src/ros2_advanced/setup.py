@@ -27,6 +27,8 @@ setup(
         'console_scripts': [
             'publisher = ros2_advanced.publisher_node:main',
             'subscriber = ros2_advanced.subscriber_node:main',
+            'tf_broadcaster = ros2_advanced.tf_broadcaster:main',
+            'tf_listener = ros2_advanced.tf_listener:main',
         ],
     },
 )
