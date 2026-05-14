@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!-- two_link_arm.urdf - A simple 2-DOF robot arm -->
+<robot name="two_link_arm">
+
+  <!-- ============================================ -->
+  <!-- MATERIAL DEFINITIONS (colors and appearance) -->
+  <!-- ============================================ -->
+  <material name="blue">
+    <color rgba="0 0 1 1"/> <!-- Red, Green, Blue, Alpha (opacity) -->
+  </material>
+  
+  <material name="red">
+    <color rgba="1 0 0 1"/>
+  </material>
+
+  <!-- ============================================ -->
+  <!-- LINK 0: BASE (fixed to the world) -->
+  <!-- ============================================ -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.2"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.1" radius="0.2"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ============================================ -->
+  <!-- JOINT 1: BASE TO LINK1 (rotates around Z axis) -->
+  <!-- ============================================ -->
+  <joint name="joint1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/> <!-- Rotate around Z (vertical) axis -->
+    <limit lower="-3.14" upper="3.14" effort="10" velocity="1.0"/> <!-- +/- 180 degrees -->
+  </joint>
+
+  <!-- ============================================ -->
+  <!-- LINK 1: FIRST ARM SEGMENT -->
+  <!-- ============================================ -->
+  <link name="link1">
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.4"/> <!-- width, depth, height -->
+      </geometry>
+      <origin xyz="0 0 0.2" rpy="0 0 0"/>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.1 0.1 0.4"/>
+      </geometry>
+      <origin xyz="0 0 0.2"/>
+    </collision>
+  </link>
+
+  <!-- ============================================ -->
+  <!-- JOINT 2: LINK1 TO LINK2 (rotates around Y axis) -->
+  <!-- ============================================ -->
+  <joint name="joint2" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="0 0 0.4" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/> <!-- Rotate around Y (horizontal) axis -->
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="1.0"/> <!-- +/- 90 degrees -->
+  </joint>
+
+  <!-- ============================================ -->
+  <!-- LINK 2: SECOND ARM SEGMENT (forearm) -->
+  <!-- ============================================ -->
+  <link name="link2">
+    <visual>
+      <geometry>
+        <box size="0.08 0.08 0.3"/>
+      </geometry>
+      <origin xyz="0 0 0.15"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.08 0.08 0.3"/>
+      </geometry>
+      <origin xyz="0 0 0.15"/>
+    </collision>
+  </link>
+
+</robot>

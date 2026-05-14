@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot name="two_link_arm" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Define parameters (change these to modify the entire robot) -->
+  <xacro:property name="base_height" value="0.1"/>
+  <xacro:property name="base_radius" value="0.2"/>
+  <xacro:property name="link1_length" value="0.4"/>
+  <xacro:property name="link1_width" value="0.1"/>
+  <xacro:property name="link2_length" value="0.3"/>
+  <xacro:property name="link2_width" value="0.08"/>
+
+  <!-- Macro for creating a simple link -->
+  <xacro:macro name="simple_link" params="name length width color">
+    <link name="${name}">
+      <visual>
+        <geometry>
+          <box size="${width} ${width} ${length}"/>
+        </geometry>
+        <material name="${color}"/>
+      </visual>
+    </link>
+  </xacro:macro>
+
+  <!-- Use the macro to create links -->
+  <xacro:simple_link name="base_link" length="${base_height}" width="${base_radius*2}" color="blue"/>
+  <xacro:simple_link name="link1" length="${link1_length}" width="${link1_width}" color="red"/>
+  <xacro:simple_link name="link2" length="${link2_length}" width="${link2_width}" color="blue"/>
+
+</robot>
