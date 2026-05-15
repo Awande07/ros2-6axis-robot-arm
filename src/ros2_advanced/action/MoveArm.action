@@ -1,0 +1,13 @@
+# Goal: Target joint positions
+float64[] target_positions
+float32 max_duration_seconds
+---
+# Result: Success status and final message
+bool success
+string message
+float32 total_duration
+---
+# Feedback: Current progress
+float64[] current_positions
+float32 percentage_complete
+string status_message
