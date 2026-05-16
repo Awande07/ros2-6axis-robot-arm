@@ -37,6 +37,7 @@ setup(
             'arm_action_server = ros2_advanced.arm_action_server:main',
             'arm_action_client = ros2_advanced.arm_action_client:main',
             'fibonacci_client = ros2_advanced.fibonacci_client:main',
+            'pick_and_place = ros2_advanced.pick_and_place:main',
         ],
     },
 )

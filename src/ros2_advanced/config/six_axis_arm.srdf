@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="six_axis_arm">
+    <!-- GROUPS: Collection of joints for motion planning -->
+    <group name="arm_group">
+        <joint name="joint1" />
+        <joint name="joint2" />
+        <joint name="joint3" />
+        <joint name="joint4" />
+        <joint name="joint5" />
+        <joint name="joint6" />
+    </group>
+    
+    <!-- END EFFECTOR: Tool link is the end effector -->
+    <group name="end_effector">
+        <link name="tool_link" />
+    </group>
+    
+    <!-- PASSIVE JOINTS: None in this arm -->
+    
+    <!-- VIRTUAL JOINTS: Connect robot to world -->
+    <virtual_joint name="world_to_base" type="fixed" parent_frame="world" child_link="base_link" />
+    
+    <!-- DISABLE COLLISIONS: Between adjacent links (they are allowed to touch) -->
+    <disable_collisions link1="base_link" link2="link1" reason="Adjacent" />
+    <disable_collisions link1="link1" link2="link2" reason="Adjacent" />
+    <disable_collisions link1="link2" link2="link3" reason="Adjacent" />
+    <disable_collisions link1="link3" link2="link4" reason="Adjacent" />
+    <disable_collisions link1="link4" link2="link5" reason="Adjacent" />
+    <disable_collisions link1="link5" link2="tool_link" reason="Adjacent" />
+</robot>

@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<!-- six_axis_arm.urdf - A complete 6-DOF robotic arm -->
+<robot name="six_axis_arm">
+
+  <!-- ============================================ -->
+  <!-- MATERIAL DEFINITIONS -->
+  <!-- ============================================ -->
+  <material name="grey">
+    <color rgba="0.5 0.5 0.5 1"/>
+  </material>
+  <material name="blue">
+    <color rgba="0.2 0.3 0.8 1"/>
+  </material>
+  <material name="red">
+    <color rgba="0.8 0.2 0.2 1"/>
+  </material>
+  <material name="green">
+    <color rgba="0.2 0.8 0.2 1"/>
+  </material>
+  <material name="yellow">
+    <color rgba="0.9 0.7 0.1 1"/>
+  </material>
+  <material name="orange">
+    <color rgba="0.9 0.5 0.1 1"/>
+  </material>
+  <material name="purple">
+    <color rgba="0.6 0.2 0.8 1"/>
+  </material>
+
+  <!-- ============================================ -->
+  <!-- BASE LINK (Fixed to world) -->
+  <!-- ============================================ -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.15" radius="0.25"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.15" radius="0.25"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+    </collision>
+  </link>
+
+  <!-- ============================================ -->
+  <!-- JOINT 1: BASE TO LINK1 (Waist rotation - Yaw) -->
+  <!-- ============================================ -->
+  <joint name="joint1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz="0 0 0.15" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="50" velocity="1.5"/>
+  </joint>
+
+  <!-- LINK 1: First arm segment -->
+  <link name="link1">
+    <visual>
+      <geometry>
+        <box size="0.12 0.12 0.35"/>
+      </geometry>
+      <origin xyz="0 0 0.175"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.12 0.12 0.35"/>
+      </geometry>
+      <origin xyz="0 0 0.175"/>
+    </collision>
+  </link>
+
+  <!-- ============================================ -->
+  <!-- JOINT 2: LINK1 TO LINK2 (Shoulder - Pitch) -->
+  <!-- ============================================ -->
+  <joint name="joint2" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="0 0 0.35" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-2.0" upper="2.0" effort="50" velocity="1.5"/>
+  </joint>
+
+  <!-- LINK 2: Second arm segment -->
+  <link name="link2">
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.3"/>
+      </geometry>
+      <origin xyz="0 0 0.15"/>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.1 0.1 0.3"/>
+      </geometry>
+      <origin xyz="0 0 0.15"/>
+    </collision>
+  </link>
+
+  <!-- ============================================ -->
+  <!-- JOINT 3: LINK2 TO LINK3 (Elbow - Pitch) -->
+  <!-- ============================================ -->
+  <joint name="joint3" type="revolute">
+    <parent link="link2"/>
+    <child link="link3"/>
+    <origin xyz="0 0 0.3" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-2.5" upper="2.5" effort="40" velocity="2.0"/>
+  </joint>
+
+  <!-- LINK 3: Third arm segment -->
+  <link name="link3">
+    <visual>
+      <geometry>
+        <box size="0.08 0.08 0.25"/>
+      </geometry>
+      <origin xyz="0 0 0.125"/>
+      <material name="green"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.08 0.08 0.25"/>
+      </geometry>
+      <origin xyz="0 0 0.125"/>
+    </collision>
+  </link>
+
+  <!-- ============================================ -->
+  <!-- JOINT 4: LINK3 TO LINK4 (Wrist 1 - Roll) -->
+  <!-- ============================================ -->
+  <joint name="joint4" type="revolute">
+    <parent link="link3"/>
+    <child link="link4"/>
+    <origin xyz="0 0 0.25" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="30" velocity="2.5"/>
+  </joint>
+
+  <!-- LINK 4: Fourth arm segment -->
+  <link name="link4">
+    <visual>
+      <geometry>
+        <box size="0.06 0.06 0.2"/>
+      </geometry>
+      <origin xyz="0 0 0.1"/>
+      <material name="yellow"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.06 0.06 0.2"/>
+      </geometry>
+      <origin xyz="0 0 0.1"/>
+    </collision>
+  </link>
+
+  <!-- ============================================ -->
+  <!-- JOINT 5: LINK4 TO LINK5 (Wrist 2 - Pitch) -->
+  <!-- ============================================ -->
+  <joint name="joint5" type="revolute">
+    <parent link="link4"/>
+    <child link="link5"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.5" upper="1.5" effort="30" velocity="2.5"/>
+  </joint>
+
+  <!-- LINK 5: Fifth arm segment -->
+  <link name="link5">
+    <visual>
+      <geometry>
+        <box size="0.05 0.05 0.15"/>
+      </geometry>
+      <origin xyz="0 0 0.075"/>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.05 0.05 0.15"/>
+      </geometry>
+      <origin xyz="0 0 0.075"/>
+    </collision>
+  </link>
+
+  <!-- ============================================ -->
+  <!-- JOINT 6: LINK5 TO TOOL_LINK (Wrist 3 - Roll) -->
+  <!-- ============================================ -->
+  <joint name="joint6" type="revolute">
+    <parent link="link5"/>
+    <child link="tool_link"/>
+    <origin xyz="0 0 0.15" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="20" velocity="3.0"/>
+  </joint>
+
+  <!-- TOOL LINK (End-effector / Gripper) -->
+  <link name="tool_link">
+    <visual>
+      <geometry>
+        <box size="0.04 0.1 0.04"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="purple"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.04 0.1 0.04"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+    </collision>
+  </link>
+
+</robot>
