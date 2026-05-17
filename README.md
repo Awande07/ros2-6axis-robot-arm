@@ -12,10 +12,10 @@ A complete ROS 2 journey from beginner to advanced, culminating in a six-axis ro
 
 ## 📸 Project Showcase
 
-| Joint State Publisher GUI | RViz with TF Frames |
-|:-------------------------:|:-------------------:|
-| ![Joint State GUI](docs/joint_state_gui.png) | ![RViz TF Frames](docs/rviz_frames.png) |
-
+| Joint State Publisher GUI | RViz with TF Frames | MoveIt Planning Confirmation |
+| :---: | :---: | :---: |
+| [![Joint State GUI](https://raw.githubusercontent.com/Awande07/ros2-6axis-robot-arm/master/docs/Screenshot%20from%202026-05-17%2017-10-21.png)](https://github.com/Awande07/ros2-6axis-robot-arm/blob/master/docs/Screenshot%20from%202026-05-17%2017-10-21.png) | [![RViz TF Frames](https://raw.githubusercontent.com/Awande07/ros2-6axis-robot-arm/master/docs/Screenshot%20from%202026-05-17%2014-52-36.png)](https://github.com/Awande07/ros2-6axis-robot-arm/blob/master/docs/Screenshot%20from%202026-05-17%2014-52-36.png) | [![MoveIt Planning](https://raw.githubusercontent.com/Awande07/ros2-6axis-robot-arm/master/docs/Screenshot%20from%202026-05-16%2014-27-43.png)](https://github.com/Awande07/ros2-6axis-robot-arm/blob/master/docs/Screenshot%20from%202026-05-16%2014-27-43.png) |
+| *Joint state publisher controlling all 6 joints* | *RViz displaying coordinate frames of each link* | *Terminal showing "You can start planning now!"* |
 *Left: Joint state publisher controlling all 6 joints | Right: RViz displaying coordinate frames of each link*
 
 ---
